@@ -1,16 +1,11 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
+apiVersion: v1
+kind: Pod
 metadata:
-  name: nginx-app
-  namespace: argocd
+  name: demo-pod
+  labels:
+    app: demo
 spec:
-  project: default
-
-  source:
-    repoURL: https://github.com/YOUR_USERNAME/YOUR_REPO.git
-    targetRevision: main
-    path: nginx
-
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: default
+  containers:
+  - name: demo-container
+    image: busybox:latest
+    command: ["sh", "-c", "while true; do echo Hello Kubernetes; sleep 3600; done"]
