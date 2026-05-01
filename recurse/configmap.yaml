@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-settings
+  namespace: default
+data:
+  # Simple key-value pairs
+  database_host: "://example.com"
+  log_level: "info"
+  max_connections: "100"
+  
+  # A complete configuration file (multi-line)
+  app-config.yaml: |
+    server:
+      port: 8080
+    features:
+      enable_cache: true
+      retry_attempts: 3
+
